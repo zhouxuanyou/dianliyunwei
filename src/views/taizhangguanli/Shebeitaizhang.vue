@@ -1,93 +1,50 @@
 <template>
     <div class="shebeitaizhang">
         <el-row>
-            <el-col :span="8"><div class="grid-content bg-purple">
-                <el-card class="box-card">
-                    <div slot="header" class="clearfix">
-                        <el-row>
-                            <el-col :span="12"><div class="grid-content bg-purple">
-                                <el-input
-                                        placeholder="请输入站房进行搜索"
-                                        v-model="filterText"
-
-                                >
-                                </el-input>
-                            </div></el-col>
-                            <el-col :span="12"><div class="grid-content bg-purple-light">
-                                <el-button type="primary" icon="el-icon-edit">新增</el-button>
-                            </div></el-col>
-                        </el-row>
-
-
-                    </div>
-                    <el-tree
-                            class="filter-tree"
-                            :data="data"
-                            :props="defaultProps"
-                            :filter-node-method="filterNode"
-                            ref="tree2"
-                            accordion
-                            @node-click="handleNodeClick"
-                    >
-                    </el-tree>
-                </el-card>
+            <el-col :span="4"><div class="grid-content bg-purple">
+                <el-tree
+                        :data="data"
+                        :props="defaultProps"
+                        accordion
+                        @node-click="handleNodeClick">
+                </el-tree>
             </div></el-col>
-            <el-col :span="8"><div class="grid-content bg-purple-light">
+            <el-col :span="20"><div class="grid-content bg-purple-light">
+
                 <el-card class="box-card">
                     <div slot="header" class="clearfix">
-                        <el-row>
-                            <el-col :span="12"><div class="grid-content bg-purple">
-                                <el-input
-                                        placeholder="请输入机柜进行搜索"
-                                        v-model="filterText"
-
-                                >
-                                </el-input>
-                            </div></el-col>
-                            <el-col :span="12"><div class="grid-content bg-purple-light">
-                                <el-button type="primary" icon="el-icon-edit">新增</el-button>
-                            </div></el-col>
-                        </el-row>
+                        <span>卡片名称</span>
+                        <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
                     </div>
-                    <el-tree
-                            class="filter-tree"
-                            :data="data"
-                            :props="defaultProps"
-                            :filter-node-method="filterNode"
-                            ref="tree2"
-                            accordion
-                            @node-click="handleNodeClick"
-                    >
-                    </el-tree>
-                </el-card>
-            </div></el-col>
-            <el-col :span="8"><div class="grid-content bg-purple">
-                <el-card class="box-card">
-                    <div slot="header" class="clearfix">
-                        <el-row>
-                            <el-col :span="12"><div class="grid-content bg-purple">
-                                <el-input
-                                        placeholder="请输入设备进行搜索"
-                                        v-model="filterText"
-
-                                >
-                                </el-input>
-                            </div></el-col>
-                            <el-col :span="12"><div class="grid-content bg-purple-light">
-                                <el-button type="primary" icon="el-icon-edit">新增</el-button>
-                            </div></el-col>
-                        </el-row>
-                    </div>
-                    <el-tree
-                            class="filter-tree"
-                            :data="data"
-                            :props="defaultProps"
-                            :filter-node-method="filterNode"
-                            ref="tree2"
-                            accordion
-                            @node-click="handleNodeClick"
-                    >
-                    </el-tree>
+                    <el-table
+                            :data="tableData"
+                            style="width: 100%">
+                        <el-table-column
+                                prop="date"
+                                label="日期"
+                                width="180">
+                        </el-table-column>
+                        <el-table-column
+                                prop="name"
+                                label="姓名"
+                                width="180">
+                        </el-table-column>
+                        <el-table-column
+                                prop="address"
+                                label="地址">
+                        </el-table-column>
+                        <el-table-column label="操作">
+                            <template slot-scope="scope">
+                                <el-button
+                                        size="mini"
+                                        @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                                <el-button
+                                        size="mini"
+                                        type="danger"
+                                        @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                            </template>
+                        </el-table-column>
+                    </el-table>
                 </el-card>
             </div></el-col>
         </el-row>
@@ -98,63 +55,81 @@
 <script>
     export default {
         name: "Shebeitaizhang",
-        watch: {
-            filterText(val) {
-                this.$refs.tree2.filter(val);
-            }
-        },
-
-        methods: {
-            filterNode(value, data) {
-                if (!value) return true;
-                return data.label.indexOf(value) !== -1;
-            }
-        },
-
         data() {
             return {
-                filterText: '',
                 data: [{
-                    id: 1,
                     label: '一级 1',
                     children: [{
-                        id: 4,
                         label: '二级 1-1',
                         children: [{
-                            id: 9,
                             label: '三级 1-1-1'
-                        }, {
-                            id: 10,
-                            label: '三级 1-1-2'
                         }]
                     }]
                 }, {
-                    id: 2,
                     label: '一级 2',
                     children: [{
-                        id: 5,
-                        label: '二级 2-1'
+                        label: '二级 2-1',
+                        children: [{
+                            label: '三级 2-1-1'
+                        }]
                     }, {
-                        id: 6,
-                        label: '二级 2-2'
+                        label: '二级 2-2',
+                        children: [{
+                            label: '三级 2-2-1'
+                        }]
                     }]
                 }, {
-                    id: 3,
                     label: '一级 3',
                     children: [{
-                        id: 7,
-                        label: '二级 3-1'
+                        label: '二级 3-1',
+                        children: [{
+                            label: '三级 3-1-1'
+                        }]
                     }, {
-                        id: 8,
-                        label: '二级 3-2'
+                        label: '二级 3-2',
+                        children: [{
+                            label: '三级 3-2-1'
+                        }]
                     }]
                 }],
                 defaultProps: {
                     children: 'children',
                     label: 'label'
-                }
-            };
+                },
+                tableData: [{
+                    date: '2019-05-10',
+                    name: '开能智慧能源有限公司',
+                    address: '成都市武侯区人民南路44号首座C栋18'
+                }, {
+                    date: '2019-05-10',
+                    name: '开能智慧能源有限公司',
+                    address: '成都市武侯区人民南路44号首座C栋18'
+                }, {
+                    date: '2019-05-10',
+                    name: '开能智慧能源有限公司',
+                    address: '成都市武侯区人民南路44号首座C栋18'
+                }, {
+                    date: '2019-05-10',
+                    name: '开能智慧能源有限公司',
+                    address: '成都市武侯区人民南路44号首座C栋18'
+                }]
+            }
+
+        },
+        methods: {
+            handleNodeClick(data) {
+                console.log(data);
+            },
+            handleEdit(index, row) {
+                console.log(index, row);
+            },
+            handleDelete(index, row) {
+                console.log(index, row);
+            }
         }
+
+
+
 
     }
 </script>
@@ -162,26 +137,24 @@
 <style scoped lang="less">
     .shebeitaizhang{
         height: 100%;
-        /*.text {*/
-            /*font-size: 14px;*/
-        /*}*/
-
-        /*.item {*/
-            /*margin-bottom: 18px;*/
-        /*}*/
-
-        .clearfix:before,
-        .clearfix:after {
-            display: table;
-            content: "";
-        }
-        .clearfix:after {
-            clear: both
-        }
-
-        .box-card {
-            /*width: 480px;*/
-            margin: 20px;
+        .el-row{
+            height: 100%;
+            .el-col{
+                height: 100%;
+                .bg-purple{
+                    height: 100%;
+                    background: #000;
+                    .el-tree{
+                        height: 100%;
+                    }
+                }
+                .bg-purple-light{
+                    height: 100%;
+                    .box-card{
+                        height: 100%;
+                    }
+                }
+            }
         }
     }
 </style>

@@ -120,7 +120,7 @@
                                 <span slot="title">系统设置</span>
                             </template>
                             <el-menu-item-group>
-                                <el-menu-item index="/unitmanagement">单位管理</el-menu-item>
+                                <el-menu-item index="/unitmanagement">用户管理</el-menu-item>
                                 <el-menu-item index="/rolemanagement">角色管理</el-menu-item>
                                 <el-menu-item index="/permissionmanagement">权限管理</el-menu-item>
                                 <el-menu-item index="/datadictionary">数据字典</el-menu-item>

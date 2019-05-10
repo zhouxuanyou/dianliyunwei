@@ -20,7 +20,7 @@ export default new Router({
           {path: '/communication',name: 'Shebeileixing',component: ()=>import('./views/taizhangguanli/Tongxinguanli')},
           {path: '/notice',name: 'Gonggaoguanli',component: ()=>import('./views/kefuzhongxin/Gonggaoguanli')},
           {path: '/permissionmanagement',name: 'Quanxianguanli',component: ()=>import('./views/xitongshezhi/Quanxianguanli')},
-          {path: 'unitmanagement',name: 'Danweiguanli',component: ()=>import('./views/xitongshezhi/Danweiguanli')},
+          {path: 'unitmanagement',name: 'Yonghuguanli',component: ()=>import('./views/xitongshezhi/Yonghuguanli')},
           {path: '/rolemanagement',name: 'Jiaoseguanli',component: ()=>import('./views/xitongshezhi/Jiaoseguanli')},
           {path: '/datadictionary',name: 'Shujuzidian',component: ()=>import('./views/xitongshezhi/Shujuzidian')},
           {path: '/realtimevalue',name: 'Shishishuju',component: ()=>import('./views/yunweizhongxin/Shishishuju')},//实时数据
