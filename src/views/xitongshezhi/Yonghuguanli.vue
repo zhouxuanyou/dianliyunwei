@@ -33,7 +33,7 @@
                                 type="primary"
                                 icon="el-icon-edit"
                                 circle
-                                @click="handleEdit(scope.$index, scope.row);flag=true"></el-button>
+                                @click="handleEdit(scope.$index, scope.row);flag=true;getuserjiaoselist(scope.row)"></el-button>
 
                         <el-button
                                 size="mini"
@@ -67,13 +67,62 @@
                     :visible.sync="flag"
                     width="50%"
                     center>
-                <el-transfer
-                        v-model="value"
-                        :data="jiaosedata"
-                        :titles="['所有角色','当前角色']"
-
-                >
-                </el-transfer>
+                <!--<el-transfer-->
+                        <!--v-model="value"-->
+                        <!--:data="jiaosedata"-->
+                        <!--:titles="['所有角色','当前角色']"-->
+                        <!--:right-default-checked="[]"-->
+                <!--&gt;-->
+                <!--</el-transfer>-->
+                <el-row>
+                    <el-col :span="12"><div class="grid-content bg-purple">
+                        <el-card class="box-card">
+                            <div slot="header" class="clearfix">
+                                <span>当前用户角色</span>
+                                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                            </div>
+                            <el-table
+                                    :data="currentjiaosedata"
+                                    height="250"
+                                    border
+                                    style="width: 100%;">
+                                <el-table-column
+                                        prop="roleName"
+                                        label="角色名称"
+                                        width="auto">
+                                </el-table-column>
+                                <el-table-column
+                                        prop="sign"
+                                        label="角色功能"
+                                        width="auto">
+                                </el-table-column>
+                            </el-table>
+                        </el-card>
+                    </div></el-col>
+                    <el-col :span="12"><div class="grid-content bg-purple-light">
+                        <el-card class="box-card">
+                            <div slot="header" class="clearfix">
+                                <span>所有角色</span>
+                            </div>
+                            <el-table
+                                    :data="jiaosedata"
+                                    height="250"
+                                    border
+                                    style="width: 100%;">
+                                <el-table-column
+                                        prop="roleName"
+                                        label="角色名称"
+                                        width="auto">
+                                </el-table-column>
+                                <el-table-column
+                                        prop="sign"
+                                        label="角色功能"
+                                        width="auto">
+                                </el-table-column>
+                            </el-table>
+                        </el-card>
+                    </div></el-col>
+                </el-row>
 
                 <span slot="footer" class="dialog-footer">
     <el-button @click="flag = false">取 消</el-button>
@@ -88,17 +137,6 @@
     export default {
         name: "Danweiguanli",
         data() {
-            // const generateData = _ => {
-            //     const data = [];
-            //     for (let i = 1; i <= 15; i++) {
-            //         data.push({
-            //             key: i,
-            //             label: `备选项 ${ i }`,
-            //             disabled: i % 4 === 0
-            //         });
-            //     }
-            //     return data;
-            // };
             return {
                 userinfo: {
 
@@ -109,23 +147,38 @@
                 tableData: [],
                 jiaosedata:[],
                 value:[],
+                currentjiaosedata:[]
+
             };
 
         },
         methods: {
+            //获取角色列表
             handleEdit(index, row) {
                 // console.log(index, row);
+                this.jiaosedata = [];
                 this.req.get('role/list')
                     .then(res=>{
-                        res.forEach(jiaose=>{
-                            // console.log(jiaose.roleName);
-                            this.jiaosedata.push({
-                                lable:jiaose.roleName,
-                                key:jiaose.id,
-                            })
-                        });
-                        // console.log(this.jiaosedata)
+                        this.jiaosedata = res
+                    })
+                    .catch(err=>{
+                        console.log(err)
+                    });
+
+
+            },
+            //获取当前用户角色
+            getuserjiaoselist(row){
+                let id = row.id;
+                this.req.get('role/currentRole',{id})
+                    .then(res=>{
                         // console.log(res)
+                        if (res[0]!=='null'){
+                            this.currentjiaosedata = res
+                        }else {
+                            this.currentjiaosedata = []
+                        }
+
                     })
                     .catch(err=>{
                         console.log(err)
@@ -140,7 +193,6 @@
             getuserlist(){
                 this.req.get('powerunit/list')
                     .then(res=>{
-                        // console.log(res);
                         this.tableData = res;
                     })
                     .catch(err=>{
