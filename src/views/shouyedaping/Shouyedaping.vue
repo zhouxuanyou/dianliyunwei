@@ -6,7 +6,7 @@
                 <div class="grid-content bg-purple elleft">
                     <div class="box1" style="color:#fff;">
                         <p>安全运行</p>
-                        <p>100天</p>
+                        <p>760天</p>
                     </div>
                     <div class="box2" style="color:#fff;">
                         <p>实时负荷(千瓦)</p>
@@ -15,8 +15,8 @@
                     <div class="box3" id="fuhe">
                     </div>
                     <div class="box4" style="color:#fff;">
-                        <p>日总电量</p>
-                        <p>0.00</p>
+                        <p>日总电量(度)</p>
+                        <p>108.00</p>
                     </div>
                 </div>
             </el-col>
@@ -236,6 +236,7 @@
                     trigger: 'axis'
                 },
                 legend: {
+                    left:100,
                     data:['今日']
                 },
                 grid: {

@@ -143,7 +143,7 @@
         data() {
             return {
                 isCollapse: false,
-                username: "请登录",
+                username: "",
                 avatarUrl: 'http://127.0.0.1:8080/avatar.jpg'
             };
         },
