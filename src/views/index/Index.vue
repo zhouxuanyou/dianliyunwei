@@ -13,7 +13,7 @@
                         <el-col :span="12">
                             <div class="top-right">
                                 <el-row>
-                                    <el-col :span="18">
+                                    <el-col :span="15">
                                         欢迎您!
                                         <el-dropdown @command="handleconmand">
                             <span class="username el-dropdown-link" >
@@ -26,10 +26,16 @@
                                             </el-dropdown-menu>
                                         </el-dropdown>
                                     </el-col>
-                                    <el-col :span="6">
+                                    <el-col :span="3">
                                         <div class="avatar">
                                             <img width="100%" height="100%" :src="avatarUrl" alt="">
                                         </div>
+                                    </el-col>
+                                    <el-col :span="3">
+                                        <div class="full" @click="fullclick">
+                                            <img  width="100%" height="100%" src="../../assets/fullscreen.svg" alt="">
+                                        </div>
+
                                     </el-col>
                                 </el-row>
                             </div>
@@ -138,13 +144,15 @@
 </template>
 
 <script>
+    import screenfull from 'screenfull'
     export default {
         name: "Index",
         data() {
             return {
                 isCollapse: false,
                 username: "",
-                avatarUrl: 'http://127.0.0.1:8080/avatar.jpg'
+                avatarUrl: 'http://127.0.0.1:8080/avatar.jpg',
+                isFullscreen: false
             };
         },
         methods: {
@@ -185,7 +193,20 @@
                 // }else {
                 //     this.$message.error('退出失败');
                 // }
+            },
+            fullclick(){
+                if (!screenfull.enabled){
+                    this.$message({
+                        message: '不支持全屏',
+                        type: 'warning'
+                    })
+                    return false
+                }else{
+                    screenfull.toggle()
+                }
             }
+
+
 
         },
         created(){
@@ -229,6 +250,12 @@
                             img {
                                 border-radius: 50%;
                             }
+                        }
+                        .full{
+                            width: 42px;
+                            height: 42px;
+                            margin-top: 8px;
+                            margin-left: 30px;
                         }
                     }
                 }

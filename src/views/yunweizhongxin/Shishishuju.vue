@@ -1,3 +1,21 @@
+Skip to content
+
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+
+@zhouxuanyou
+0
+0 0 zhouxuanyou/dianliyunwei
+Code  Issues 0  Pull requests 0  Projects 0  Wiki  Security  Insights  Settings
+dianliyunwei/src/views/yunweizhongxin/Shishishuju.vue
+@zhouxuanyou zhouxuanyou 电力运维demo 角色管理
+4600457 10 days ago
+246 lines (229 sloc)  7.58 KB
+
 <template>
     <div class="shishishuju">
         <el-row>
@@ -38,26 +56,22 @@
         created(){
             this.gettaizhanglist();
         },
-
         methods: {
             filterNode(value, data) {
                 if (!value) return true;
                 return data.label.indexOf(value) !== -1;
             },
             //获取站点信息
-
             gettaizhanglist(){
                 let cabinetId =2;
                 this.req.get('/equipment/list',{cabinetId})
                     .then(res=>{
                         // console.log(res);
                         this.data = res;
-
                     })
                     .catch(err=>{
                         console.log(err)
                     })
-
             },
         },
         mounted(){
@@ -154,7 +168,6 @@
                                 yAxis: 20
                             }]
                         }
-
                     },
                     {
                         name:'C相电流',
@@ -178,31 +191,25 @@
                     },
                 ]
             };
-
             app.count = 11;
             let deviceId =2;
             setInterval(function (){
-               let axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
-
+                let axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
                 var data1 = option.series[0].data;
                 data1.shift();
                 data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
-
                 option.xAxis.data.shift();
                 option.xAxis.data.push(axisData);
-               //  req.get('/realTimeData/getValue',{deviceId})
-               //      .then(res=>{
-               //          console.log(res);
-               //      })
-               //      .catch(err=>{
-               //          console.log(err);
-               //      })
-
+                //  req.get('/realTimeData/getValue',{deviceId})
+                //      .then(res=>{
+                //          console.log(res);
+                //      })
+                //      .catch(err=>{
+                //          console.log(err);
+                //      })
                 myChart.setOption(option);
             }, 2100);
-
         },
-
         data() {
             return {
                 filterText: '',
@@ -213,8 +220,6 @@
                 }
             };
         },
-
-
     }
 </script>
 
@@ -241,6 +246,6 @@
                 }
             }
         }
-
     }
 </style>
+
