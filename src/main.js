@@ -5,10 +5,12 @@ import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './common/css/common.css'
+import Moment from 'moment'
 // 引入request.js
 import req from '@/api/request';
 import Echarts from 'echarts'
 Vue.prototype.echarts = Echarts;
+Vue.prototype.moment = Moment;
 Vue.use(Echarts);
 
 

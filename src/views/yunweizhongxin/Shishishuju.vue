@@ -195,21 +195,33 @@ dianliyunwei/src/views/yunweizhongxin/Shishishuju.vue
             let deviceId =2;
             setInterval(function (){
                 let axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
-                var data1 = option.series[0].data;
-                data1.shift();
-                data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
+                var Iadata = option.series[0].data;
+                var Ibdata = option.series[1].data;
+                var Icdata = option.series[2].data;
+                Iadata.shift();
+                Iadata.push((Math.random() * 10 + 5).toFixed(1) - 0);
+                Ibdata.shift();
+                Ibdata.push((Math.random() * 10 + 5).toFixed(1) - 0);
+                Icdata.shift();
+                Icdata.push((Math.random() * 10 + 5).toFixed(1) - 0);
                 option.xAxis.data.shift();
                 option.xAxis.data.push(axisData);
-                //  req.get('/realTimeData/getValue',{deviceId})
-                //      .then(res=>{
-                //          console.log(res);
-                //      })
-                //      .catch(err=>{
-                //          console.log(err);
-                //      })
+                 // req.get('/realTimedata',{deviceId})
+                 //     .then(res=>{
+                 //         Iadata.push(res.Ia);
+                 //         Ibdata.shift();
+                 //         Ibdata.push(res.Ib);
+                 //         Icdata.shift();
+                 //         Icdata.push(res.Ic);
+                 //     })
+                 //     .catch(err=>{
+                 //         console.log(err);
+                 //     })
                 myChart.setOption(option);
-            }, 2100);
+            }, 5000);
+            myChart.setOption(option);
         },
+
         data() {
             return {
                 filterText: '',

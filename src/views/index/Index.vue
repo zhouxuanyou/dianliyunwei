@@ -64,16 +64,16 @@
                             unique-opened
                             router
                     >
-                        <el-submenu index="1">
-                            <template slot="title">
-                                <i class="el-icon-location"></i>
-                                <span slot="title">首页</span>
-                            </template>
-                            <el-menu-item-group>
-                                <el-menu-item index="/">首页大屏</el-menu-item>
-                                <el-menu-item index="/shujuzhongxin">数据中心</el-menu-item>
-                            </el-menu-item-group>
-                        </el-submenu>
+                        <!--<el-submenu index="1">-->
+                            <!--<template slot="title">-->
+                                <!--<i class="el-icon-location"></i>-->
+                                <!--<span slot="title">首页</span>-->
+                            <!--</template>-->
+                            <!--<el-menu-item-group>-->
+                                <!--<el-menu-item index="/">首页大屏</el-menu-item>-->
+                                <!--<el-menu-item index="/shujuzhongxin">数据中心</el-menu-item>-->
+                            <!--</el-menu-item-group>-->
+                        <!--</el-submenu>-->
                         <el-submenu index="2">
                             <template slot="title">
                                 <i class="el-icon-s-platform"></i>
@@ -95,43 +95,43 @@
                                 <el-menu-item index="/datareport">数据报表</el-menu-item>
                             </el-menu-item-group>
                         </el-submenu>
-                        <el-submenu index="4">
-                            <template slot="title">
-                                <i class="el-icon-s-order"></i>
-                                <span slot="title">台账管理</span>
-                            </template>
-                            <el-menu-item-group>
-                                <el-menu-item index="/equipmentledger">设备台账</el-menu-item>
-                                <el-menu-item index="/communication">通信管理</el-menu-item>
-                            </el-menu-item-group>
-                        </el-submenu>
-                        <el-submenu index="5">
-                            <template slot="title">
-                                <i class="el-icon-phone"></i>
-                                <span slot="title">客服中心</span>
-                            </template>
-                            <el-menu-item-group>
-                                <el-menu-item index="/notice">公告管理</el-menu-item>
-                            </el-menu-item-group>
-                        </el-submenu>
-                        <el-submenu index="6">
-                            <template slot="title">
-                                <i class="el-icon-s-cooperation"></i>
-                                <span slot="title">系统组态</span>
-                            </template>
-                        </el-submenu>
-                        <el-submenu index="7">
-                            <template slot="title">
-                                <i class="el-icon-s-tools"></i>
-                                <span slot="title">系统设置</span>
-                            </template>
-                            <el-menu-item-group>
-                                <el-menu-item index="/unitmanagement">用户管理</el-menu-item>
-                                <el-menu-item index="/rolemanagement">角色管理</el-menu-item>
-                                <el-menu-item index="/permissionmanagement">权限管理</el-menu-item>
-                                <el-menu-item index="/datadictionary">数据字典</el-menu-item>
-                            </el-menu-item-group>
-                        </el-submenu>
+                        <!--<el-submenu index="4">-->
+                            <!--<template slot="title">-->
+                                <!--<i class="el-icon-s-order"></i>-->
+                                <!--<span slot="title">台账管理</span>-->
+                            <!--</template>-->
+                            <!--<el-menu-item-group>-->
+                                <!--<el-menu-item index="/equipmentledger">设备台账</el-menu-item>-->
+                                <!--<el-menu-item index="/communication">通信管理</el-menu-item>-->
+                            <!--</el-menu-item-group>-->
+                        <!--</el-submenu>-->
+                        <!--<el-submenu index="5">-->
+                            <!--<template slot="title">-->
+                                <!--<i class="el-icon-phone"></i>-->
+                                <!--<span slot="title">客服中心</span>-->
+                            <!--</template>-->
+                            <!--<el-menu-item-group>-->
+                                <!--<el-menu-item index="/notice">公告管理</el-menu-item>-->
+                            <!--</el-menu-item-group>-->
+                        <!--</el-submenu>-->
+                        <!--<el-submenu index="6">-->
+                            <!--<template slot="title">-->
+                                <!--<i class="el-icon-s-cooperation"></i>-->
+                                <!--<span slot="title">系统组态</span>-->
+                            <!--</template>-->
+                        <!--</el-submenu>-->
+                        <!--<el-submenu index="7">-->
+                            <!--<template slot="title">-->
+                                <!--<i class="el-icon-s-tools"></i>-->
+                                <!--<span slot="title">系统设置</span>-->
+                            <!--</template>-->
+                            <!--<el-menu-item-group>-->
+                                <!--<el-menu-item index="/unitmanagement">用户管理</el-menu-item>-->
+                                <!--<el-menu-item index="/rolemanagement">角色管理</el-menu-item>-->
+                                <!--<el-menu-item index="/permissionmanagement">权限管理</el-menu-item>-->
+                                <!--<el-menu-item index="/datadictionary">数据字典</el-menu-item>-->
+                            <!--</el-menu-item-group>-->
+                        <!--</el-submenu>-->
                     </el-menu>
                 </el-aside>
                 <el-main>
